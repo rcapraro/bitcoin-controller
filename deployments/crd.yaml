@@ -1,0 +1,23 @@
+apiVersion: apiextension.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: bitcoinnetworks.bitcoin-controller
+spec:
+  version: v1
+  group: bitcoincontroller
+  scope: Namespaced
+  subresources:
+    status: {}
+  names:
+    plural: bitcoinnetworks
+    singular: bitcoinnetwork
+    kind: BitcoinNetwork
+  validation:
+    openAPIV3Schema:
+      properties:
+        spec:
+          required:
+          - nodes
+          properties:
+            nodes:
+              type: int  
